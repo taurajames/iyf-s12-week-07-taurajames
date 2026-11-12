@@ -1,82 +1,44 @@
 
-// ==========================================
-// STEP 1: SELECT HTML ELEMENTS
-// ==========================================
+import {
+    addTask,
+    toggleTask,
+    deleteTask,
+    editTask,
+    clearCompleted
+} from "./todo-logic.js";
 
+import {
+    tasks,
+    currentFilter,
+    updateTasks,
+    updateFilter
+} from "./state.js";
+
+import { saveData, loadData } from "./storage.js";
+import { renderTasks } from "./ui.js";
+
+// Select HTML elements
 const todoForm = document.querySelector("#todo-form");
 const todoInput = document.querySelector("#todo-input");
 const todoList = document.querySelector("#todo-list");
-const itemsLeft = document.querySelector("#items-left");
 const filterButtons = document.querySelectorAll(".filter-btn");
 const clearCompletedButton = document.querySelector("#clear-completed");
 
-
-// ==========================================
-// STEP 2: STORE TASKS IN AN ARRAY
-// ==========================================
-
-let tasks = [];
-let currentFilter = "all";
-
-
-// ==========================================
-// STEP 3: DISPLAY TASKS ON THE PAGE
-// ==========================================
-
-function renderTasks() {
-    todoList.innerHTML = "";
-
-    let filteredTasks = tasks;
-
-    if (currentFilter === "active") {
-        filteredTasks = tasks.filter(function (task) {
-            return !task.completed;
-        });
-    } else if (currentFilter === "completed") {
-        filteredTasks = tasks.filter(function (task) {
-            return task.completed;
-        });
-    }
-
-    // Display each task
-    filteredTasks.forEach(function (task) {
-        const li = document.createElement("li");
-        li.classList.add("todo-item");
-        li.dataset.id = task.id;
-
-        if (task.completed) {
-            li.classList.add("completed");
-        }
-
-        const taskText = document.createElement("span");
-        taskText.classList.add("todo-text");
-        taskText.textContent = task.text;
-
-        const deleteButton = document.createElement("button");
-        deleteButton.textContent = "Delete";
-        deleteButton.classList.add("delete-btn");
-        deleteButton.type = "button";
-
-        li.appendChild(taskText);
-        li.appendChild(deleteButton);
-
-        todoList.appendChild(li);
-    });
-
-    // Update remaining task count
-    const remainingTasks = tasks.filter(function (task) {
-        return !task.completed;
-    }).length;
-
-    itemsLeft.textContent = remainingTasks +
-        (remainingTasks === 1 ? " item left" : " items left");
+// Render tasks and save application data
+function renderAndSave() {
+    renderTasks(tasks, currentFilter);
+    saveData(tasks, currentFilter);
 }
 
+// Load previously saved data
+const savedData = loadData();
 
-// ==========================================
-// STEP 4: ADD NEW TASKS
-// ==========================================
+updateTasks(savedData.tasks);
+updateFilter(savedData.currentFilter);
 
+renderTasks(tasks, currentFilter);
+
+// Add new tasks
 todoForm.addEventListener("submit", function (event) {
     event.preventDefault();
 
@@ -87,26 +49,15 @@ todoForm.addEventListener("submit", function (event) {
         return;
     }
 
-    const newTask = {
-        id: Date.now(),
-        text: taskText,
-        completed: false
-    };
-
-    tasks.push(newTask);
+    updateTasks(addTask(tasks, taskText));
 
     todoInput.value = "";
 
-    renderTasks();
+    renderAndSave();
 });
 
-  
-// ==========================================
-// STEP 5: COMPLETE AND DELETE TASKS
-// ==========================================
-
+// Complete and delete tasks
 todoList.addEventListener("click", function (event) {
-
     // Ignore the second click of a double-click
     if (event.detail > 1) {
         return;
@@ -121,30 +72,20 @@ todoList.addEventListener("click", function (event) {
     const taskId = Number(taskItem.dataset.id);
 
     if (event.target.classList.contains("delete-btn")) {
-        tasks = tasks.filter(function (task) {
-            return task.id !== taskId;
-        });
+        updateTasks(deleteTask(tasks, taskId));
 
     } else if (event.target.classList.contains("todo-text")) {
-        tasks = tasks.map(function (task) {
-            if (task.id === taskId) {
-                task.completed = !task.completed;
-            }
+        updateTasks(toggleTask(tasks, taskId));
 
-            return task;
-        });
+    } else {
+        return;
     }
 
-    renderTasks();
+    renderAndSave();
 });
 
-
-// ==========================================
-// BONUS: EDIT TASKS
-// ==========================================
-
+// Edit tasks by double-clicking
 todoList.addEventListener("dblclick", function (event) {
-    console.log("Double-click detected!");
     const taskText = event.target.closest(".todo-text");
 
     if (!taskText) {
@@ -154,8 +95,8 @@ todoList.addEventListener("dblclick", function (event) {
     const taskItem = taskText.closest(".todo-item");
     const taskId = Number(taskItem.dataset.id);
 
-    const task = tasks.find(function (task) {
-        return task.id === taskId;
+    const task = tasks.find(function (item) {
+        return item.id === taskId;
     });
 
     if (!task) {
@@ -163,6 +104,7 @@ todoList.addEventListener("dblclick", function (event) {
     }
 
     const editInput = document.createElement("input");
+
     editInput.type = "text";
     editInput.value = task.text;
     editInput.classList.add("edit-input");
@@ -172,7 +114,6 @@ todoList.addEventListener("dblclick", function (event) {
     editInput.focus();
     editInput.select();
 
-    // Save or cancel editing
     editInput.addEventListener("keydown", function (event) {
         if (event.key === "Enter") {
             const updatedText = editInput.value.trim();
@@ -182,43 +123,28 @@ todoList.addEventListener("dblclick", function (event) {
                 return;
             }
 
-            task.text = updatedText;
-            renderTasks();
+            updateTasks(editTask(tasks, taskId, updatedText));
+
+            renderAndSave();
 
         } else if (event.key === "Escape") {
-            renderTasks();
+            renderTasks(tasks, currentFilter);
         }
     });
 });
 
-
-// ==========================================
-// STEP 6: FILTER TASKS
-// ==========================================
-
+// Filter tasks
 filterButtons.forEach(function (button) {
     button.addEventListener("click", function () {
-        currentFilter = button.dataset.filter;
+        updateFilter(button.dataset.filter);
 
-        filterButtons.forEach(function (filterButton) {
-            filterButton.classList.remove("active");
-        });
-
-        button.classList.add("active");
-
-        renderTasks();
+        renderAndSave();
     });
 });
 
-
-// ==========================================
-// STEP 7: CLEAR COMPLETED TASKS
-// ==========================================
-
+// Clear completed tasks
 clearCompletedButton.addEventListener("click", function () {
-    tasks = tasks.filter(function (task) {
-        return !task.completed;
-    });
+    updateTasks(clearCompleted(tasks));
 
-    renderTasks();
+    renderAndSave();
 });
