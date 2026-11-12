@@ -1,0 +1,28 @@
+{
+  "name": "iyf-s12-week-07-taurajames",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "vitest run",
+    "lint": "eslint ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/taurajames/iyf-s12-week-07-taurajames.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/taurajames/iyf-s12-week-07-taurajames/issues"
+  },
+  "homepage": "https://github.com/taurajames/iyf-s12-week-07-taurajames#readme",
+  "devDependencies": {
+    "@eslint/js": "^9.39.5",
+    "eslint": "^9.39.5",
+    "prettier": "^3.10.1",
+    "vitest": "^5.1.0"
+  }
+}
