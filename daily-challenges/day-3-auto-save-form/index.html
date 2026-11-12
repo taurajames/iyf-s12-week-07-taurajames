@@ -1,0 +1,34 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auto-Saving Form</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main class="container">
+        <h1>My Auto-Saving Form</h1>
+
+        <p>Your information is automatically saved every 5 seconds.</p>
+
+        <form id="auto-save-form">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" placeholder="Enter your name">
+
+            <label for="email">Email Address</label>
+            <input type="email" id="email" placeholder="Enter your email">
+
+            <label for="message">Message</label>
+            <textarea id="message" rows="5" placeholder="Write your message"></textarea>
+
+            <button type="button" id="clear-form">Clear Form</button>
+        </form>
+
+        <p id="save-status">Your information has not been saved yet.</p>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
