@@ -1,10 +1,8 @@
-
 // Select the theme toggle button
 const themeToggle = document.getElementById("theme-toggle");
 
 // Select the body element
 const body = document.body;
-
 
 // Load the saved theme from LocalStorage
 const savedTheme = localStorage.getItem("theme");
@@ -14,7 +12,6 @@ if (savedTheme === "dark") {
     body.classList.add("dark-mode");
     themeToggle.textContent = "Switch to Light Mode";
 }
-
 
 // Switch themes when the button is clicked
 themeToggle.addEventListener("click", function () {

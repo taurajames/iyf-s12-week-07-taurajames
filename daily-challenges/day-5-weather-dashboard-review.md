@@ -1,4 +1,3 @@
-
 # Day 5: Weather Dashboard Review
 
 ## Project Reviewed
