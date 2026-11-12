@@ -1,4 +1,3 @@
-
 import { filterTasks, countActiveTasks } from "./todo-logic.js";
 
 // Select HTML elements
@@ -39,8 +38,8 @@ export function renderTasks(tasks, currentFilter) {
     // Update remaining task count
     const remainingTasks = countActiveTasks(tasks);
 
-    itemsLeft.textContent = remainingTasks +
-        (remainingTasks === 1 ? " item left" : " items left");
+    itemsLeft.textContent =
+        remainingTasks + (remainingTasks === 1 ? " item left" : " items left");
 
     // Highlight selected filter
     filterButtons.forEach(function (button) {

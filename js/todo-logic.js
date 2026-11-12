@@ -1,4 +1,3 @@
-
 // Add a new task
 export function addTask(tasks, text, id = Date.now()) {
     const trimmedText = text.trim();
@@ -10,7 +9,7 @@ export function addTask(tasks, text, id = Date.now()) {
     const newTask = {
         id,
         text: trimmedText,
-        completed: false
+        completed: false,
     };
 
     return [...tasks, newTask];
@@ -22,7 +21,7 @@ export function toggleTask(tasks, taskId) {
         if (task.id === taskId) {
             return {
                 ...task,
-                completed: !task.completed
+                completed: !task.completed,
             };
         }
 
@@ -49,7 +48,7 @@ export function editTask(tasks, taskId, newText) {
         if (task.id === taskId) {
             return {
                 ...task,
-                text: trimmedText
+                text: trimmedText,
             };
         }
 

@@ -1,11 +1,10 @@
-
 const STORAGE_KEY = "todo-app-data";
 
 // Save tasks and filter
 export function saveData(tasks, currentFilter) {
     const data = {
         tasks: tasks,
-        currentFilter: currentFilter
+        currentFilter: currentFilter,
     };
 
     try {
@@ -23,7 +22,7 @@ export function loadData() {
         if (!savedData) {
             return {
                 tasks: [],
-                currentFilter: "all"
+                currentFilter: "all",
             };
         }
 
@@ -45,21 +44,20 @@ export function loadData() {
         ) {
             return {
                 tasks: [],
-                currentFilter: "all"
+                currentFilter: "all",
             };
         }
 
         return {
             tasks: data.tasks,
-            currentFilter: data.currentFilter
+            currentFilter: data.currentFilter,
         };
-
     } catch (error) {
         console.error("Could not load saved data:", error);
 
         return {
             tasks: [],
-            currentFilter: "all"
+            currentFilter: "all",
         };
     }
 }

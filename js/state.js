@@ -1,4 +1,3 @@
-
 export let tasks = [];
 export let currentFilter = "all";
 
