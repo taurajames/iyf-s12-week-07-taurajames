@@ -149,7 +149,10 @@ The project is organized into the following folders and files:
 
 ## Live Demo
 
-Coming soon.
+## Collaboration
+
+- My refactoring PR: [Refactor To-Do app into modules](https://github.com/taurajames/iyf-s12-week-07-taurajames/pull/1)
+- My partner's PR review: [Review of James's To-Do app](https://github.com/jamesmwangi96ismyhandle-source/iyf-s12-week-07-jamesmwangi96ismyhandle-source/pull/1)
 
 ## Author
 
