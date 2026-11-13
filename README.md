@@ -149,6 +149,7 @@ The project is organized into the following folders and files:
 
 ## Live Demo
 
+[View the live To-Do List](https://taurajames.github.io/iyf-s12-week-07-taurajames/)
 ## Collaboration
 
 - My refactoring PR: [Refactor To-Do app into modules](https://github.com/taurajames/iyf-s12-week-07-taurajames/pull/1)
