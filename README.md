@@ -9,6 +9,7 @@ It also includes a shopping cart and five daily JavaScript challenges.
 ## Features
 
 ### 1. To-Do List
+
 - Add new tasks.
 - Mark tasks as completed.
 - Edit and delete tasks.
@@ -18,6 +19,7 @@ It also includes a shopping cart and five daily JavaScript challenges.
 - Restore saved data after refreshing the page.
 
 ### 2. Shopping Cart
+
 - Add products to the cart.
 - Increase or decrease product quantities.
 - Remove products.
@@ -25,6 +27,7 @@ It also includes a shopping cart and five daily JavaScript challenges.
 - Save cart data using LocalStorage.
 
 ### 3. Daily Challenges
+
 - Persistent theme toggle.
 - Search history.
 - Auto-saving form.
@@ -86,6 +89,7 @@ To access the shopping cart, open `cart/index.html`.
 The project uses Vitest to test the To-Do List logic.
 
 The tests cover:
+
 - Adding tasks.
 - Rejecting empty tasks.
 - Completing and deleting tasks.
@@ -106,10 +110,12 @@ npm test
 The project is organized into the following folders and files:
 
 ### 1. Main Application
+
 - `index.html` - Main To-Do List page.
 - `styles.css` - Application styling.
 
 ### 2. JavaScript Modules (`js/`)
+
 - `app.js` - Controls application events.
 - `state.js` - Manages application state.
 - `storage.js` - Handles LocalStorage.
@@ -117,14 +123,17 @@ The project is organized into the following folders and files:
 - `ui.js` - Handles displaying tasks.
 
 ### 3. Shopping Cart (`cart/`)
+
 - `index.html` - Shopping cart page.
 - `cart.css` - Shopping cart styling.
 - `cart.js` - Shopping cart functionality.
 
 ### 4. Tests (`tests/`)
+
 - `todo-logic.test.js` - Tests the To-Do List functions.
 
 ### 5. Daily Challenges (`daily-challenges/`)
+
 - Day 1: Persistent Theme Toggle.
 - Day 2: Search History.
 - Day 3: Auto-Saving Form.
@@ -132,6 +141,7 @@ The project is organized into the following folders and files:
 - Day 5: Weather Dashboard Review.
 
 ### 6. Project Configuration
+
 - `package.json` - Project dependencies and scripts.
 - `eslint.config.js` - ESLint configuration.
 - `.prettierrc` - Prettier formatting rules.
@@ -152,16 +162,20 @@ GitHub: [taurajames](https://github.com/taurajames)
 Developed as part of the **IYF Season 12 Web Development Program**.
 
 This project represents my practical learning in JavaScript, web development, modular programming, testing and version control.
+
 ### Changes made
+
 - Created a `css` folder and moved `styles.css` into it.
 - Created a `js` folder and moved `app.js` into it.
 - Updated the stylesheet and JavaScript paths in `index.html`.
 - Tested the To-Do application to confirm that styling and functionality still work.
 
 ### Testing
+
 - Verified the folder structure.
 - Confirmed the application opens correctly.
 - Confirmed the application functionality works.
 
 ### Purpose
+
 Improve project organization and maintainability by separating HTML, CSS and JavaScript files.

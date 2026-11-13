@@ -1,36 +1,33 @@
-
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Search History</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <main class="container">
-        <h1>Search History</h1>
-        <p>Your five most recent searches will appear below.</p>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Search History</title>
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+        <main class="container">
+            <h1>Search History</h1>
+            <p>Your five most recent searches will appear below.</p>
 
-        <form id="search-form">
-            <input
-                type="search"
-                id="search-input"
-                placeholder="Enter something to search..."
-                required
-            >
-            <button type="submit">Search</button>
-        </form>
+            <form id="search-form">
+                <input
+                    type="search"
+                    id="search-input"
+                    placeholder="Enter something to search..."
+                    required
+                />
+                <button type="submit">Search</button>
+            </form>
 
-        <section class="history-section">
-            <h2>Recent Searches</h2>
-            <ul id="search-history"></ul>
-            <button type="button" id="clear-history">
-                Clear History
-            </button>
-        </section>
-    </main>
+            <section class="history-section">
+                <h2>Recent Searches</h2>
+                <ul id="search-history"></ul>
+                <button type="button" id="clear-history">Clear History</button>
+            </section>
+        </main>
 
-    <script src="script.js"></script>
-</body>
+        <script src="script.js"></script>
+    </body>
 </html>

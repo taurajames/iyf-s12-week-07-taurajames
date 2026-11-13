@@ -1,4 +1,3 @@
-
 // Select the search form
 const searchForm = document.getElementById("search-form");
 
@@ -10,7 +9,6 @@ const searchHistory = document.getElementById("search-history");
 
 // Select the clear history button
 const clearHistoryButton = document.getElementById("clear-history");
-
 
 // The key used to store search history
 const STORAGE_KEY = "recent-searches";
@@ -35,7 +33,6 @@ try {
     console.error("Could not load search history:", error);
 }
 
-
 // Display saved searches on the page
 function displaySearchHistory() {
     searchHistory.innerHTML = "";
@@ -54,7 +51,6 @@ function displaySearchHistory() {
     });
 }
 
-
 // Save search history in LocalStorage
 function saveSearchHistory() {
     try {
@@ -63,7 +59,6 @@ function saveSearchHistory() {
         console.error("Could not save search history:", error);
     }
 }
-
 
 // Handle search form submission
 searchForm.addEventListener("submit", function (event) {
@@ -93,7 +88,6 @@ searchForm.addEventListener("submit", function (event) {
     searchInput.value = "";
 });
 
-
 // Clear all saved searches
 clearHistoryButton.addEventListener("click", function () {
     searches = [];
@@ -101,7 +95,6 @@ clearHistoryButton.addEventListener("click", function () {
     saveSearchHistory();
     displaySearchHistory();
 });
-
 
 // Display search history when the page loads
 displaySearchHistory();

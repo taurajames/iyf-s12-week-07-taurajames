@@ -1,4 +1,3 @@
-
 // Select the form fields
 const nameInput = document.getElementById("name");
 const emailInput = document.getElementById("email");
@@ -13,13 +12,12 @@ const clearButton = document.getElementById("clear-form");
 // Storage key
 const STORAGE_KEY = "auto-save-form-data";
 
-
 // Save form information in LocalStorage
 function saveFormData() {
     const formData = {
         name: nameInput.value,
         email: emailInput.value,
-        message: messageInput.value
+        message: messageInput.value,
     };
 
     try {
@@ -31,7 +29,6 @@ function saveFormData() {
         saveStatus.textContent = "Unable to save your information.";
     }
 }
-
 
 // Restore previously saved form information
 function loadFormData() {
@@ -65,12 +62,10 @@ function loadFormData() {
     }
 }
 
-
 // Automatically save form data every 5 seconds
 setInterval(function () {
     saveFormData();
 }, 5000);
-
 
 // Clear all form fields and saved information
 clearButton.addEventListener("click", function () {
@@ -82,7 +77,6 @@ clearButton.addEventListener("click", function () {
 
     saveStatus.textContent = "The form has been cleared.";
 });
-
 
 // Restore saved information when the page loads
 loadFormData();

@@ -1,4 +1,3 @@
-
 # Day 4: Refactoring JavaScript Code
 
 ## Objective
